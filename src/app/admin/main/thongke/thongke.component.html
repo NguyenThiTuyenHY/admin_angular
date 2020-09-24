@@ -1,0 +1,61 @@
+<!-- <p-table [value]="books">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Price In Dollars</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+        <tr>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.price}}</td>
+        </tr>
+    </ng-template>
+</p-table> -->
+<form class="ui large form segement">
+    <h3 class="ui header"> Add a link</h3>
+    <div class="field">
+        <label for="title">Titel:</label>
+        <input type="text" name="title" #newtitle>
+    </div>
+    <div class="field">
+        <label for="link">Link:</label>
+        <input type="text" name="link" #newlink>
+    </div>
+    <button (click)="addArticle(newtitle,newlink)" class="ui positive right floated button">Submit link</button>
+</form>
+
+
+<ng-container *ngFor="let s of ds">
+    <div style="border: 1px solid black;">
+        <div class="four wide column center aligned votes">
+            <div class="ui statistic">
+                <div class="value">
+                    {{ s.votes }}
+                </div>
+                <div class="label">
+                    Points
+                </div>
+            </div>
+        </div>
+        <div class="twelve wide column">
+            <a class="ui large header" href="{{ s.link }}">
+             {{ s.title }}
+            </a>
+            <ul class="ui big horizontal list voters">
+                <li class="item">
+                    <a href (click)="voteUp()">
+                        <i class="arrow up icon"></i> upvote
+                    </a>
+                </li>
+                <li class="item">
+                    <a href (click)="voteDown()">
+                        <i class="arrow down icon"></i> downvote
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-container>
